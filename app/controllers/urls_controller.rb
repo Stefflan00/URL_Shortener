@@ -4,7 +4,7 @@ def index
 end
 
 def show
-  url = Url.where(:random_id=>params[:id]).first
+  url = Url.where(random_id: params[:id]).first
   if url
     redirect_to url.original
   else
@@ -16,14 +16,16 @@ end
 def new
   @url = Url.new
   letters = [('a'..'z'), ('A'..'Z')].map {|i| i.to_a}.flatten
-  @url.random_id = (0...8).map{letters[rand(letters.length)]}.join
+  @url.random_id = (0...6).map{letters[rand(letters.length)]}.join
+
 end
 
 def urls_params
-  params.require(:url).permit(:original, :random_id)
+    params.require(:url).permit(:original, :random_id)
 end
 
 def create
+
   @url = Url.new(urls_params)
 
   if @url.save

@@ -1,9 +1,11 @@
-<h1>Urly Urls</h1>
+<h1>shorten Urls</h1>
 
+
+<p>Please use http:// infront of your url!</p>
 <% @urls.each do |url| %>
 
 <p>
-  <%= link_to url.random_id, url_path(id: url.random_id) %> >goes to< <%= url.original%>
+  <%= link_to url.random_id, url_path(id: url.random_id) %> => <%= url.original%>
 </p>
 <% end %>
 
